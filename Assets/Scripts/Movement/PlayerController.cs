@@ -56,9 +56,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private bool TryMove(Vector2 direction)
+    private void TryDash()
     {
 
+    }
+
+    private bool TryMove(Vector2 direction)
+    {
         //Create raycast for collisions
         tally = rgdb.Cast(
                 direction, //X and Y values between -1 and 1 that represents direction to look for collisions
