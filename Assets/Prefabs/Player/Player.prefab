@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3783396818477573378}
   - component: {fileID: 5033834709721479640}
   - component: {fileID: 7771160228726062020}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,8 +79,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 35915957
   m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1115147903, guid: 46acf0925fdf7984a9219c5f89349a67, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 207848475, guid: 205c70f3cea04d54b9dd3905b91f7b13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 8442489795860597257}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 777274739e4e0ce4d9489213e23cb457, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1c55b23e6b0bb0b40ad983214bfa99e2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   playerObject: {fileID: 8442489795860597257}
   hitPoints: 3
   ticketCount: 0
+  iFramesSecs: 0.7
   dead: 0
 --- !u!114 &3798265960202460691
 MonoBehaviour:
@@ -170,11 +171,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4369a2863c98947b9f21a2ff15d367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
+  recievedDamage: 0
+  dmgPushForce: 0
+  dmgPushDuration: 0
+  isDashing: 0
   dashSpeed: 3
   dashDuration: 0.25
   dashCooldown: 1
   tr: {fileID: 7771160228726062020}
-  trailTime: 0
   standardSpeed: 0
   moveSpeed: 1
   collisionOffset: 0.05
@@ -192,6 +197,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  rgbd: {fileID: 0}
 --- !u!50 &3783396818477573378
 Rigidbody2D:
   serializedVersion: 4
@@ -251,18 +257,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0005233288, y: -0.066137135}
+  m_Offset: {x: -0.11001134, y: -2.0699613}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5122206, y: 0.2999999}
-    oldSize: {x: 0.48, y: 0.48}
+    pivot: {x: 0.4424683, y: 0.667366}
+    oldSize: {x: 10.02, y: 10.021957}
     newSize: {x: 0.48, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09021616, y: 0.014959931}
+  m_Size: {x: 1.6029935, y: 0.34398806}
   m_EdgeRadius: 0
 --- !u!96 &7771160228726062020
 TrailRenderer:
@@ -304,7 +310,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2008466447
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Time: 0.15
   m_PreviewTimeScale: 0.42

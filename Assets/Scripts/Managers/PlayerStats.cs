@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     //Player hit points
     public int hitPoints;
     public int ticketCount;
+    public float iFramesSecs = 0.7f;
     public bool dead;
 
     void Start()
