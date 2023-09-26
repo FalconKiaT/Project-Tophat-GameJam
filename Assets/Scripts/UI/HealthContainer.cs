@@ -13,11 +13,12 @@ public class HealthContainer : MonoBehaviour
     private int hitPoints;
 
     //Debugging vars
-    public bool testHit = false;
+    public bool testHit;
 
     // Awake is called when an object with this script is initialized
     void Awake()
     {
+        testHit = false;
         //Set the images on object instance
         hitPoint1.GetComponent<Image>().sprite = fullHit;
         hitPoint2.GetComponent<Image>().sprite = fullHit;

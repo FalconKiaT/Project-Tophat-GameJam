@@ -5,16 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - HarmfulObject
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PlayerHitbox
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - HarmfulObjects
+  - HUD
   - 
   - 
   - 
@@ -42,6 +43,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: HUD
+  - name: Floor Details
     uniqueID: 1480140631
+    locked: 0
+  - name: SFX
+    uniqueID: 2008466447
+    locked: 0
+  - name: World Objects
+    uniqueID: 2050970015
+    locked: 0
+  - name: Characters
+    uniqueID: 35915957
+    locked: 0
+  - name: Collidables
+    uniqueID: 4242670621
+    locked: 0
+  - name: UI & HUD
+    uniqueID: 2797668393
     locked: 0

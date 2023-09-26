@@ -11,12 +11,18 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats player;
+    public GameObject playerObject;
     //Player hit points
-    public int hitPoints = 3;
-    public int ticketCount = 0;
+    public int hitPoints;
+    public int ticketCount;
+    public float iFramesSecs = 0.7f;
+    public bool dead;
 
     void Start()
     {
+        hitPoints = 3;
+        ticketCount = 0;
+        dead = false;
         //Creates a global reference so we can interact with the player stats from anywhere
         player = this;
         //TODO: WRITE STATS TO A FILE
@@ -26,6 +32,12 @@ public class PlayerStats : MonoBehaviour
     public int TakeHit()
     {
         hitPoints--;
+        //Check for death
+        if (hitPoints <= 0)
+        {
+            //Triggers for death animation and other events
+            this.dead = true;
+        }
         return hitPoints;
     }
 
