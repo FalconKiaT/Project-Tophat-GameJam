@@ -11,7 +11,7 @@ public class CircusBall : MonoBehaviour
 
     //Random starting direction variables
     private string randomDir;
-    public float ballSpeed = 0.5f;
+    public float ballSpeed = 1.5f;
     private string[] dirArray = { "upRight",
                                   "downRight",
                                   "downLeft", 

@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashDuration;
     [SerializeField] float dashCooldown;
     [SerializeField] TrailRenderer tr;
+    PlaySoundOnTrigger _PlayerDash;
 
     //Animation Variablese
     Animator animator;
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
         rgbd = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        _PlayerDash = GetComponent<PlaySoundOnTrigger>();
         //Vector to allow for movement in x or y if one or the other is experiencing a collision
         xCheck = new Vector2(0, 0);
         yCheck = new Vector2(0, 0);
@@ -203,6 +205,7 @@ public class PlayerController : MonoBehaviour
         // Ignore collisions with harmful objects while dashing
         // 7 = Harmful Objects / 6 = player
         Physics2D.IgnoreLayerCollision(6, 7, true);
+        _PlayerDash.TriggerSound();
 
         rgbd.velocity = new Vector2(movementInput.x * dashSpeed, movementInput.y * dashSpeed);
         yield return new WaitForSeconds(dashDuration);

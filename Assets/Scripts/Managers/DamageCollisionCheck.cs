@@ -8,11 +8,12 @@ public class DamageCollisionCheck : MonoBehaviour
     Collider2D Collider;
     Collider2D playerCollider;
     PlayerController playerController;
-
+    PlaySoundOnTrigger _PlayerHitSound;
 
     // Start is called before the first frame update
     void Start()
     {
+        _PlayerHitSound = GetComponent<PlaySoundOnTrigger>();
         playerCollider = playerObject.GetComponent<Collider2D>();
         playerController = playerObject.GetComponent<PlayerController>();
     }
@@ -31,6 +32,7 @@ public class DamageCollisionCheck : MonoBehaviour
             //call the damage push animation, ignore if player is dead
             if (!PlayerStats.player.dead)
             {
+                _PlayerHitSound.TriggerSound();
                 StartCoroutine(playerController.TookDamage(this.transform));
             }
 
