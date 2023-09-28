@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 //Takes Input and handles the movement of the player inside the level
@@ -89,6 +90,7 @@ public class PlayerController : MonoBehaviour
             //died, stop all movement
             animator.SetBool("died", true);
             rgbd.velocity = Vector2.zero;
+            SceneManager.LoadScene("DeathScreen");
             return;
         }
 

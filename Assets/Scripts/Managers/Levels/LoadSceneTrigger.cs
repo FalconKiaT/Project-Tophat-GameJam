@@ -10,7 +10,7 @@ public class LoadSceneTrigger : MonoBehaviour
     
     public void LoadScene()
     {
-        SceneManager.LoadSceneAsync(SceneName);
+        SceneManager.LoadScene(SceneName);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
