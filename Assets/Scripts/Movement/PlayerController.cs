@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 yCheck;
     public bool canMove;
     public bool recievedDamage;
+    public GameObject laserHurt;
+    private AudioSource _laserDMG;
     [SerializeField] float dmgPushForce;
     [SerializeField] float dmgPushDuration;
 
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashDuration;
     [SerializeField] float dashCooldown;
     [SerializeField] TrailRenderer tr;
+    PlaySoundOnTrigger _PlayerDash;
 
     //Animation Variablese
     Animator animator;
@@ -56,9 +59,11 @@ public class PlayerController : MonoBehaviour
         dashDuration = 0.1f;
         dashSpeed = 4f;
         collisionOffset = 0.02f;
+        _laserDMG = laserHurt.GetComponent<AudioSource>();
 
         rgbd = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        _PlayerDash = GetComponent<PlaySoundOnTrigger>();
         //Vector to allow for movement in x or y if one or the other is experiencing a collision
         xCheck = new Vector2(0, 0);
         yCheck = new Vector2(0, 0);
@@ -203,6 +208,7 @@ public class PlayerController : MonoBehaviour
         // Ignore collisions with harmful objects while dashing
         // 7 = Harmful Objects / 6 = player
         Physics2D.IgnoreLayerCollision(6, 7, true);
+        _PlayerDash.TriggerSound();
 
         rgbd.velocity = new Vector2(movementInput.x * dashSpeed, movementInput.y * dashSpeed);
         yield return new WaitForSeconds(dashDuration);
@@ -224,12 +230,22 @@ public class PlayerController : MonoBehaviour
         if (!recievedDamage)
         {
             LockMovement();
-            
 
+            Vector2 pushDir;
             //Deal damage to player
             PlayerStats.player.TakeHit();
             //Move player away from object
-            Vector2 pushDir = this.transform.position - enemyTransform.position;
+
+            if (enemyTransform == null)
+            {
+                pushDir = RandomVector(-0.15f, 0.15f);
+                //This is only used by lasers, so play their hit sound
+                _laserDMG.Play();
+            }
+            else
+            {
+                pushDir = this.transform.position - enemyTransform.position;
+            }
             rgbd.velocity = new Vector2(pushDir.x * dmgPushForce, pushDir.y * dmgPushForce);
 
             //Calculate damage source for animation
@@ -266,6 +282,13 @@ public class PlayerController : MonoBehaviour
             rgbd.velocity = new Vector2(0, 0);
             UnlockMovement();
         }
+    }
+
+    private Vector2 RandomVector(float min, float max)
+    {
+        var x = Random.Range(min, max);
+        var y = Random.Range(min, max);
+        return new Vector2(x, y);
     }
 
     public IEnumerator iFramesTrigger()
