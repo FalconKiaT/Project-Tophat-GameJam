@@ -8,14 +8,14 @@ public class LoadSceneTrigger : MonoBehaviour
 
     public string SceneName;
     
-    public void LoadBoss1()
+    public void LoadScene()
     {
         SceneManager.LoadSceneAsync(SceneName);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        LoadBoss1();
+        LoadScene();
     }
 
 }

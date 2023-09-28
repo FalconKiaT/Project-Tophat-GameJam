@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        newEnemy = Instantiate(enemyPrefab, this.transform.position, Quaternion.identity);
+        newEnemy = Instantiate(enemyPrefab, this.transform.position, this.transform.rotation);
         enemysAlive.Add(newEnemy);
     }
 
