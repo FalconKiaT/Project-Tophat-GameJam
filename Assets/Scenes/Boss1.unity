@@ -3475,7 +3475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 261155146109366683, guid: f5e911a690d8f8b47a58cf5b4e9b5e87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.97747433
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 261155146109366683, guid: f5e911a690d8f8b47a58cf5b4e9b5e87, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3509,13 +3509,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1314514475540785133, guid: f5e911a690d8f8b47a58cf5b4e9b5e87, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1467982211, guid: 7085241a66f952e4bbec8a726945f6cf, type: 3}
     - target: {fileID: 8526709130345166622, guid: f5e911a690d8f8b47a58cf5b4e9b5e87, type: 3}
       propertyPath: m_Name
       value: TopHat Phase 1
       objectReference: {fileID: 0}
     - target: {fileID: 8526709130345166622, guid: f5e911a690d8f8b47a58cf5b4e9b5e87, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
